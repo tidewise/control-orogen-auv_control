@@ -115,9 +115,10 @@ void GroundFollower::updateHook()
     else { //a dropout can be a sample with nan
         if(state() != ALTIMETER_DROPOUT)
             state(ALTIMETER_DROPOUT);
-        if(altimeter_dropout_timeout.elapsed())
+        if(altimeter_dropout_timeout.elapsed()) {
             exception(ALTIMETER_DROPOUT_TIMEOUT);
             return;
+        }
     }
 
 
